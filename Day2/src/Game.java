@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Game {
+public class Game{
     private static final HashMap<Character, Integer> choiceScores = new HashMap<>();
     private static final HashMap<Character, Character> gameRules = new HashMap<>();
     private static final int WIN = 6;
@@ -16,7 +16,7 @@ public class Game {
     /**
      * Constructor to set up the game. Read in input file and populate
      * the opponent and player choices. Also construct score map and game rules
-     * @param filename - the name of the input file
+     * @param filename - the name of the input f
      */
     public Game(String filename) throws FileNotFoundException {
         // set up game by reading in file
@@ -80,6 +80,5 @@ public class Game {
         }
 
         return gameRules.get(playerChoice).equals(opponentChoice) ? LOSS : WIN;
-
     }
 }
