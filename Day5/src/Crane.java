@@ -57,7 +57,7 @@ public class Crane {
      * Method to run through input file and move the crates between the stacks
      * @param filename - the name of the input file
      */
-    public void run(String filename) throws FileNotFoundException {
+    public void run(String filename, boolean craneType) throws FileNotFoundException {
         File file = new File(filename);
         Scanner scanner = new Scanner(file);
 
@@ -74,11 +74,20 @@ public class Crane {
                 int fromCrate = Integer.parseInt(movement[2]) -1 ;
                 int toCrate = Integer.parseInt(movement[3]) - 1;
 
-                // for the number of crates to move, move crate from fromCrate to toCrate
-                for (int i = 0; i < numberOfCrates; i++){
-                    stacks.get(toCrate).addCrate(stacks.get(fromCrate).removeCrate());
+                if (craneType){
+                    // for the number of crates to move, move crate from fromCrate to toCrate
+                    for (int i = 0; i < numberOfCrates; i++){
+                        stacks.get(toCrate).addCrate(stacks.get(fromCrate).removeCrate());
+                    }
+                }else{
+                    char[] cratesToMove = new char[numberOfCrates];
+                    for (int i = 0; i < numberOfCrates; i++) {
+                        cratesToMove[i] = stacks.get(fromCrate).removeCrate();
+                    }
+                    stacks.get(toCrate).addMultipleCrates(cratesToMove);
                 }
             }
         }
     }
 }
+

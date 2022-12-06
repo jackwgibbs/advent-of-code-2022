@@ -22,6 +22,15 @@ public class Stack {
     }
 
     /**
+     * Method to add a list of crates to the stack
+     */
+    public void addMultipleCrates(char[] multipleCrates){
+        for (int i = multipleCrates.length; i-- > 0; ) {
+            this.addCrate(multipleCrates[i]);
+        }
+    }
+
+    /**
      * Method to pop top crate from the stack
      * @return top crate from stack
      */

@@ -6,6 +6,9 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         Crane crane = new Crane(INPUT_FILE, NUM_OF_CRATES);
-        crane.run(INPUT_FILE);
+        crane.run(INPUT_FILE, true);
+
+        Crane craneTwo = new Crane(INPUT_FILE, NUM_OF_CRATES);
+        craneTwo.run(INPUT_FILE, false);
     }
 }
