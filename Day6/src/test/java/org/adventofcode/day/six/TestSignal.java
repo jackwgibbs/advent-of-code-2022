@@ -1,6 +1,4 @@
-package org.day6;
-
-import org.day6.Signal;
+package org.adventofcode.day.six;
 
 import org.junit.Test;
 
@@ -38,5 +36,21 @@ public class TestSignal{
         Signal signal = new Signal(filename);
         int marker = signal.getStartOfPacketMarker(4);
         assertEquals(marker, 11);
+    }
+
+    @Test
+    public void testGetStartOfPacketMarkerFive(){
+        String filename = "input5.txt";
+        Signal signal = new Signal(filename);
+        int marker = signal.getStartOfPacketMarker(14);
+        assertEquals(marker, 19);
+    }
+
+    @Test
+    public void testGetStartOfPacketMarkerSix(){
+        String filename = "input6.txt";
+        Signal signal = new Signal(filename);
+        int marker = signal.getStartOfPacketMarker(14);
+        assertEquals(marker, 29);
     }
 }
