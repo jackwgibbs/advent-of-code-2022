@@ -21,4 +21,17 @@ public class TestFileSystem {
         int total = fileSystem.sumOfDirectorySizesOverSize(100000);
         assertEquals(95437, total);
     }
+
+    @Test
+    public void testFindSmallestDirectoryToDeleteForUpdate(){
+        String filename = "input.txt";
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(filename);
+        Scanner scanner = new Scanner(inputStream);
+        FileSystem fileSystem = new FileSystem();
+
+        fileSystem.getDirectorySizes(scanner);
+        int smallestDirectorySize = fileSystem.findSmallestDirectoryToDeleteForUpdate();
+        assertEquals(24933642, smallestDirectorySize);
+    }
 }

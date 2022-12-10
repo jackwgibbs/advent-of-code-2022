@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     private static final String FILENAME = "input.txt";
+
     public static void main(String[] args) {
         // read in file as input stream
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -16,5 +17,9 @@ public class Main {
         fileSystem.getDirectorySizes(scanner);
         int total = fileSystem.sumOfDirectorySizesOverSize(100000);
         System.out.println(total);
+
+        // part two
+        int directoryToDelete = fileSystem.findSmallestDirectoryToDeleteForUpdate();
+        System.out.println(directoryToDelete);
     }
 }

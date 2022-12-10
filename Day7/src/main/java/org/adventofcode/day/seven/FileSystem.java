@@ -3,8 +3,12 @@ package org.adventofcode.day.seven;
 import java.util.*;
 
 public class FileSystem {
-    Stack<String> currentPath = new Stack<>();
-    HashMap<String, Integer> directorySizes = new HashMap<>();
+    private Stack<String> currentPath = new Stack<>();
+    private HashMap<String, Integer> directorySizes = new HashMap<>();
+
+    private int totalDiskSpace = 70000000;
+
+    private int spaceForUpdate = 30000000;
 
     public FileSystem(){
         // initialise with the root directory
@@ -90,5 +94,24 @@ public class FileSystem {
         }
         return path.toString();
     }
-}
 
+    /**
+     * Method to find the smallest directory to delete that provides system enough space for an update
+     * @return the size of the smallest directory to delete
+     */
+    public int findSmallestDirectoryToDeleteForUpdate(){
+        int smallestDirectorySize = 70000000; // initialise to a large value
+        int diskSpaceUsed = directorySizes.get("/");
+        int diskSpaceRemaining = totalDiskSpace - diskSpaceUsed;
+
+        for (String directory : directorySizes.keySet()) {
+            // check whether deleting this directory provides enough space for update
+            if( (diskSpaceRemaining + directorySizes.get(directory)) > spaceForUpdate ){
+                if (directorySizes.get(directory) < smallestDirectorySize){
+                    smallestDirectorySize = directorySizes.get(directory);
+                }
+            }
+        }
+        return smallestDirectorySize;
+    }
+}
